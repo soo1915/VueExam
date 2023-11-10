@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div id="app">
+
+
+       <h1>뷰 라우터 예제</h1>
+       <p>
+        <router-link to="/">motor 컴포넌트로 이동</router-link>
+        <router-link to="/dog">dog 컴포넌트로 이동</router-link>
+     </p>
+     
+       <router-view></router-view>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+   <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+   <script>
+       const motorcycle = {
+            template: `<img src="http://loremflickr.com/320/240/motorcycle"  alt="오토바이"/>`
+        }
+
+        const dog = {
+            template: `<img src="http://loremflickr.com/320/240/dog"  alt="개"/>`
+        }
+
+       const router = new VueRouter({
+            routes: [{
+                path: '/',
+                component: motorcycle
+            }, {
+                path: '/dog',
+                component: dog
+            }]
+        })
+
+
+       new Vue({
+            router  
+
+       }).$mount('#app');
+   </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div id="app">
+    <mytag v-bind:data1="mmm" v-on:eee="rrr"></mytag>
+   </div>
+   <script src="http://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+   <script>
+       Vue.component('mytag',{
+        props: ['data1'],
+        template: `<div>
+                    <h2>전역 컴포넌트 {{data1}}</h2>
+                    <button v-on:click="bbb">클릭</button>
+                   </div>`,
+        methods: {
+            bbb: function() {
+                console.log('나온다');
+                this.$emit('eee', 405);
+            }
+        }
+
+       });
+
+       new Vue({
+        el: '#app',
+        data: {
+            mmm: '1111'
+        },
+        created: function() {
+
+        },
+        methods: {
+            rrr: function(vv) {
+                console.log("받았다", vv);
+            }
+        }
+       });
+   </script>
+</body>
+</html>
